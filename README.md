@@ -11,3 +11,5 @@ Implementation of algorithms and data structures as taught in Algorithms I and I
 * Right click and select Import > Maven > Existing Maven Projects.
 * Select the cloned project directory in the Root Directory.
 
+# contributors
+- Ignác (enchf).
