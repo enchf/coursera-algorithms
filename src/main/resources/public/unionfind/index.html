@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Union Find implementations</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- Stylesheets: Bootstrap, Font-Awesome, Monominoes, Samples CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../lib/css/monominoes.css" />
+    
+    <!-- Javascript Libraries: jQuery 1.11, jQuery Validation plugin, Bootstrap, Monominoes, Samples JS -->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="../lib/js/monominoes.js"></script>
+    <script src="controller.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Union Find</h1>
+        <p>Select an implementation to see Union Find in action</p>
+        <form>
+          <div class="form-group">
+    		<label for="input-size">Number of elements</label>
+    		<input type="number" class="form-control" id="input-size" placeholder="Number of Elements">
+  		  </div>
+  		  <div class="form-group">
+  		  	<label for="implementation">Implementation to be used</label>
+  		  	<div class="dropdown" id="implementation">
+          	  <button class="btn btn-default dropdown-toggle" type="button" id="samples" data-toggle="dropdown" 
+          	          aria-haspopup="true" aria-expanded="true">List of Union Find implementations<span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="samples" id="implementations-ul"></ul>
+        	</div>
+  		  </div>
+  		  <div class="form-group">
+  		  	<button type="submit" class="btn btn-primary">Start/Restart</button>
+        	<button type="button" class="btn btn-default">Reset</button>
+  		  </div>
+        </form>
+      </div>
+    </div>
+    <div class="container" id="place-sample"></div>
+  </body>
+</html>
