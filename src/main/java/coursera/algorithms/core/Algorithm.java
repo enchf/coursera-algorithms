@@ -14,10 +14,4 @@ public interface Algorithm {
 	 * @return Execution stage descriptor.
 	 */
 	Stage getStage();
-	
-	/**
-	 * Parses input data string representation.
-	 * @param data Data to be processed by the algorithm.
-	 */
-	void parseInput(String data);
 }

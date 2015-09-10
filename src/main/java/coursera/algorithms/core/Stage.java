@@ -17,11 +17,10 @@ public class Stage implements Serializable {
 	private Class<?> algorithm;
 	private Object state;
 	
-	public Stage(String description, Class<?> algorithm, Object state) {
+	public Stage(String description, Class<?> algorithm) {
 		super();
 		this.description = description;
 		this.algorithm = algorithm;
-		this.state = state;
 	}
 
 	public String getDescription() {
@@ -34,5 +33,9 @@ public class Stage implements Serializable {
 
 	public Object getState() {
 		return state;
+	}
+
+	public void setState(Object state) {
+		this.state = state;
 	}
 }
