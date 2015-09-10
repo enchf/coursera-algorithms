@@ -14,4 +14,9 @@ public interface Algorithm {
 	 * @return Execution stage descriptor.
 	 */
 	Stage getStage();
+	
+	/**
+	 * Resets the implementation to its initial stage.	
+	 */
+	void reset();
 }

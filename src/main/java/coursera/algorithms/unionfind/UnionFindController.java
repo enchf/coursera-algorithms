@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import coursera.algorithms.core.Controller;
+import coursera.algorithms.core.BaseController;
 import coursera.algorithms.core.Stage;
 
 /**
@@ -15,22 +15,14 @@ import coursera.algorithms.core.Stage;
  * @author Ernesto Espinosa.
  */
 @RestController
-public class UnionFindController implements Controller {
-
-	/** {@inheritDoc} */
-	@Override
-	@RequestMapping("/unionfind/init")
-	public void init(@RequestParam(value="data") String data) {
-		
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	@RequestMapping("/unionfind/reset")
-	public void reset() {
-		
-	}
+public class UnionFindController extends BaseController<UnionFind> {
 	
+	/** {@inheritDoc} */
+	@RequestMapping("/unionfind/init")
+	public void init(@RequestParam String implementation, @RequestParam int n) {
+		start(implementation, n);
+	}
+
 	/**
 	 * Joins p component with q component.
 	 * Operation available only after initialization.
@@ -40,7 +32,8 @@ public class UnionFindController implements Controller {
 	 */
 	@RequestMapping("/unionfind/union")
 	public Stage union(@RequestParam(value="p") int p, @RequestParam(value="q") int q) {
-		return null;
+		getAlgorithm().union(p, q);
+		return getAlgorithm().getStage();
 	}
 	
 	/**
@@ -52,6 +45,6 @@ public class UnionFindController implements Controller {
 	 */
 	@RequestMapping("/unionfind/connected")
 	public boolean connected(@RequestParam(value="p") int p, @RequestParam(value="q") int q) {
-		return false;
+		return getAlgorithm().connected(p, q);
 	}
 }

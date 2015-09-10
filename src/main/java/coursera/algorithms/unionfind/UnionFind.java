@@ -3,11 +3,13 @@
  */
 package coursera.algorithms.unionfind;
 
+import coursera.algorithms.core.Algorithm;
+
 /**
  * Interface for Union-Find implementations.
  * @author Ernesto Espinosa.
  */
-public interface UnionFind {
+public interface UnionFind extends Algorithm {
 
 	/**
 	 * Add connection between A and B.

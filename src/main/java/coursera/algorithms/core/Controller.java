@@ -8,13 +8,13 @@ package coursera.algorithms.core;
  * @author Ernesto Espinosa.
  */
 public interface Controller {
-
+	
 	/**
-	 * Initialize the controller.
-	 * @param data Initialization data.
+	 * Initializes the controller.
+	 * @param args Initialization arguments.
 	 */
-	void init(String data);
-
+	void start(String bean, Object...args);
+	
 	/**
 	 * Resets the controller.
 	 */

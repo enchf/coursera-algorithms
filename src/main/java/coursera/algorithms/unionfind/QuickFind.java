@@ -5,7 +5,6 @@ package coursera.algorithms.unionfind;
 
 import org.apache.commons.lang3.StringUtils;
 
-import coursera.algorithms.core.Algorithm;
 import coursera.algorithms.core.Description;
 import coursera.algorithms.core.Stage;
 
@@ -16,14 +15,14 @@ import coursera.algorithms.core.Stage;
  * @author Ernesto Espinosa.
  */
 @Description("Eager approach for union-find")
-public class QuickFind implements UnionFind, Algorithm {
+public class QuickFind implements UnionFind {
 	
 	private int id[];
 	private int count;
 
 	public QuickFind(int n) {
 		id = new int[n];
-		for (int i = 0; i < n; i++) id[i] = i;
+		reset();
 	}
 	
 	/**
@@ -68,5 +67,12 @@ public class QuickFind implements UnionFind, Algorithm {
 	@Override
 	public Stage getStage() {
 		return new Stage(StringUtils.join(id, ' '), QuickFind.class);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public void reset() {
+		for (int i = 0; i < id.length; i++) id[i] = i;
+		count = id.length;
 	}
 }
