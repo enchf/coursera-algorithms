@@ -21,25 +21,64 @@
       <div class="jumbotron">
         <h1>Union Find</h1>
         <p>Select an implementation to see Union Find in action</p>
-        <form>
-          <div class="form-group">
-    		<label for="input-size">Number of elements</label>
-    		<input type="number" class="form-control" id="input-size" placeholder="Number of Elements">
-  		  </div>
-  		  <div class="form-group">
-  		  	<label for="implementation">Implementation to be used</label>
-  		  	<div class="dropdown" id="implementation">
-          	  <button class="btn btn-default dropdown-toggle" type="button" id="samples" data-toggle="dropdown" 
-          	          aria-haspopup="true" aria-expanded="true">List of Union Find implementations<span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="samples" id="implementations-ul"></ul>
-        	</div>
-  		  </div>
-  		  <div class="form-group">
-  		  	<button type="submit" class="btn btn-primary">Start/Restart</button>
-        	<button type="button" class="btn btn-default">Reset</button>
-  		  </div>
-        </form>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <form>
+	          <div class="form-group">
+			    		<label for="input-size">Number of elements</label>
+			    		<input type="number" class="form-control" id="input-size" placeholder="Number of Elements">
+		  		  </div>
+		  		  <div class="form-group">
+		  		  	<label for="implementation">Implementation to be used</label>
+		  		  	<div class="dropdown" id="implementation">
+		            <button class="btn btn-default dropdown-toggle" type="button" id="samples" data-toggle="dropdown" 
+		          	         aria-haspopup="true" aria-expanded="true">List of Union Find implementations<span class="caret"></span>
+		            </button>
+		            <ul class="dropdown-menu" aria-labelledby="samples" id="implementations-ul"></ul>
+		        	</div>
+		  		  </div>
+		  		  <div class="form-group">
+		  		  	<button type="submit" class="btn btn-primary">Start/Restart</button>
+		        	<button type="button" class="btn btn-default">Reset</button>
+		  		  </div>
+	        </form>
+	        <hr>
+	        <form>
+	          <h3>Join elements</h3>
+            <div class="form-group">
+              <p>Specify elements to be joined separated by '-': 1-2.</p>
+              <p>Elements are numbered from 0 to N-1</p>
+              <p>Multiple elements can be sent separated by commas: 1-2, 3-4, ..., etc.</p>
+              <label for="union-data">Elements to join</label>
+              <input type="text" class="form-control" id="union-data" placeholder="Elements to join">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Do Union</button>
+              <button type="reset" class="btn btn-default">Reset</button>
+            </div>
+	        </form>
+	        <hr>
+	        <form>
+            <div class="form-group">
+              <label for="connected-a">Connection test</label>
+              <input type="text" class="form-control" id="connected-a" placeholder="Element A">
+              <input type="text" class="form-control" id="connected-b" placeholder="Element B">
+            </div>
+            <div class="form-group">
+	            <button type="submit" class="btn btn-primary">Are connected?</button>
+	            <button type="reset" class="btn btn-default">Reset</button>
+	          </div>        
+          </form>
+        </div>
+        <div class="col-sm-6">
+          <div class="jumbotron">
+            <h1>Results:</h1>
+            <p id="results"></p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="container" id="place-sample"></div>
