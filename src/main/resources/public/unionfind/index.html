@@ -9,11 +9,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../lib/css/monominoes.css" />
+    <style type="text/css">
+	  .form-horizontal .form-group {
+      margin: 5px 0;
+	  }
+	  </style>
     
     <!-- Javascript Libraries: jQuery 1.11, jQuery Validation plugin, Bootstrap, Monominoes, Samples JS -->
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="../lib/js/monominoes.js"></script>
+    <script src="../lib/js/common.js"></script>
     <script src="controller.js"></script>
   </head>
   <body>
@@ -21,37 +28,26 @@
       <div class="jumbotron">
         <h1>Union Find</h1>
         <p>Select an implementation to see Union Find in action</p>
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="input-size">Number of elements</label>
+            <input type="number" class="form-control" id="input-size" placeholder="Number of Elements">
+          </div>
+          <div class="form-group" id="dropdown-group"><!-- Dynamic Dropdown will be inserted here --></div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Start/Restart</button>
+            <button type="button" class="btn btn-default">Reset</button>
+          </div>
+        </form>
       </div>
     </div>
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
-          <form>
-	          <div class="form-group">
-			    		<label for="input-size">Number of elements</label>
-			    		<input type="number" class="form-control" id="input-size" placeholder="Number of Elements">
-		  		  </div>
-		  		  <div class="form-group">
-		  		  	<label for="implementation">Implementation to be used</label>
-		  		  	<div class="dropdown" id="implementation">
-		            <button class="btn btn-default dropdown-toggle" type="button" id="samples" data-toggle="dropdown" 
-		          	         aria-haspopup="true" aria-expanded="true">List of Union Find implementations<span class="caret"></span>
-		            </button>
-		            <ul class="dropdown-menu" aria-labelledby="samples" id="implementations-ul"></ul>
-		        	</div>
-		  		  </div>
-		  		  <div class="form-group">
-		  		  	<button type="submit" class="btn btn-primary">Start/Restart</button>
-		        	<button type="button" class="btn btn-default">Reset</button>
-		  		  </div>
-	        </form>
-	        <hr>
-	        <form>
+	        <form class="form-horizontal">
 	          <h3>Join elements</h3>
+	          <p>Specify elements to be joined separated by '-' (1-2), numbered from 0 to N-1, separated by commas: (1-2, 3-4, ...)</p>
             <div class="form-group">
-              <p>Specify elements to be joined separated by '-': 1-2.</p>
-              <p>Elements are numbered from 0 to N-1</p>
-              <p>Multiple elements can be sent separated by commas: 1-2, 3-4, ..., etc.</p>
               <label for="union-data">Elements to join</label>
               <input type="text" class="form-control" id="union-data" placeholder="Elements to join">
             </div>
@@ -61,8 +57,9 @@
             </div>
 	        </form>
 	        <hr>
-	        <form>
-            <div class="form-group">
+	        <form class="form-horizontal">
+	         <h3>Check for union</h3>
+            <div class="form-inline form-group">
               <label for="connected-a">Connection test</label>
               <input type="text" class="form-control" id="connected-a" placeholder="Element A">
               <input type="text" class="form-control" id="connected-b" placeholder="Element B">
@@ -81,6 +78,5 @@
         </div>
       </div>
     </div>
-    <div class="container" id="place-sample"></div>
   </body>
 </html>

@@ -63,6 +63,12 @@ Monominoes.cache = {};
 Monominoes.renders = {};
 Monominoes.tags = {};
 
+/* ID generator */
+Monominoes.counter = 0;
+Monominoes.genId = function() {
+  return MonoUtils.format("MonoID-{0}",Monominoes.counter++);
+};
+
 /* Render helpers */
 Monominoes.validate = function(cfg) {
   var val = ["target","div","data","layout"];
@@ -103,8 +109,8 @@ Monominoes.createRender = function(rendercfg) {
 /* Initialization */                                                                    
 (Monominoes.init = function() {
   /* Static values */
-  var simpletags = ["div","h1","h2","h3","h4","h5","h6","span","li","header","strong","p","pre"];
-  var complextags = ["img","ul","ol","br","a"];
+  var simpletags = ["div","h1","h2","h3","h4","h5","h6","span","li","header","strong","p","pre","label"];
+  var complextags = ["img","ul","ol","br","a","button"];
   var tags = simpletags.concat(complextags);
   for (var x in tags) Monominoes.tags[tags[x].toUpperCase()] = tags[x];
   
@@ -295,6 +301,88 @@ Monominoes.createRender = function(rendercfg) {
     }
   };
   
+  Monominoes.renders.DROPDOWN_EL = {
+    "click": MonoUtils.nothing,
+    "href": "#",
+    "formatter": MonoUtils.self,
+    "datakey": "dd-data",
+    "render": function(item,parent) {
+      var li,a;
+      
+      li = MonoUtils.getTag(Monominoes.tags.LI).appendTo(parent);
+      a = MonoUtils.getTag(Monominoes.tags.A)
+        .click(this.click)
+        .attr("href",this.href)
+        .text(this.formatter(item))
+        .data(this.datakey,item)
+        .appendTo(li);
+      
+      return li;
+    }
+  };    
+  
+  Monominoes.renders.DROPDOWN = {
+    "class": "",
+    "btn-class": "btn dropdown-toggle",
+    "label": null,
+    "placeholder": "",
+    "inline": false,
+    "id": null,
+    "formatter": MonoUtils.self,
+    "item-click": MonoUtils.nothing,
+    "getHref": function(item) { return "#"; },
+    "datakey": "dd-data",
+    "render": function(data,parent) {
+      var id,item,render;
+      var div,button,ul;
+      
+      id = (this.id || Monominoes.genId());
+      if (this.label != undefined) {
+        MonoUtils.getTag(Monominoes.tags.LABEL)
+          .attr("for",id+"-ul")
+          .text(this.label)
+          .appendTo(parent);
+      }
+      
+      div = MonoUtils.getTag(Monominoes.tags.DIV)
+        .addClass("dropdown")
+        .css("margin-left","0.5em")
+        .attr("id", id)
+        .appendTo(parent);
+      
+      if (this.inline === true) div.css("display","inline-block");
+  
+      button = MonoUtils.getTag(Monominoes.tags.BUTTON)
+        .addClass(this["btn-class"])
+        .attr("type","button")
+        .attr("id",id+"-btn")
+        .attr("data-toggle","dropdown")
+        .attr("aria-haspopup","true")
+        .attr("aria-expanded","true")
+        .text(this.placeholder)
+        .append(MonoUtils.getTag(Monominoes.tags.SPAN).addClass("caret"))
+        .appendTo(div);
+      
+      ul = MonoUtils.getTag(Monominoes.tags.UL)
+        .attr("id",id+"-ul")
+        .addClass("dropdown-menu")
+        .attr("aria-labeledby",button.attr("id"))
+        .appendTo(div);
+      
+      for (var x in data) {
+        item = data[x];
+        render = Monominoes.renders.DROPDOWN_EL({
+          "click": this["item-click"],
+          "formatter": this.formatter,
+          "href": this.getHref(item),
+          "datakey": this.datakey
+        });
+        
+        render.render(item,ul);
+      }
+    }
+  };
+  
   Monominoes.renders.GRID = {}; // TODO.
   
   // Render creation.
@@ -307,16 +395,18 @@ Monominoes.prototype.source = function(cfg,src) {
   return cfg.absolute ? this.data : (cfg["source-path"] ? MonoUtils.path(src,cfg["source-path"]) : src);
 };
 
-Monominoes.prototype.buildGrid = function(parent,src,cfg) {
+Monominoes.prototype.buildGrid = function(parent,src,cfg,root) {
+  var isroot = (root === true);
   var source = this.source(cfg,src);
   var data = cfg.path != undefined ? MonoUtils.path(source, cfg.path) : [source];
   var cols = (cfg.cols || 1);
-  var div,row,col,thm;
+  var css,div,row,col,thm;
   var items,item,el;
   var i = 0;
   
+  css = MonoUtils.append("monominoes container", isroot ? "monominoes-root" : "");
   div = MonoUtils.getTag(Monominoes.tags.DIV)
-    .addClass(MonoUtils.append("monominoes container",MonoUtils.path(cfg, "class.container")))
+    .addClass(MonoUtils.append(css,MonoUtils.path(cfg, "class.container")))
     .appendTo(parent);
   
   for (var x in data) {
@@ -367,7 +457,7 @@ Monominoes.build = function(cfg) {
   
   m.div = (m.div) ? $(m.div) : $("#"+m.target);
   m.target = (m.target || (m.div.id || null));
-  m.buildGrid(m.div, m.data, m.layout);
+  m.buildGrid(m.div, m.data, m.layout, true);
   
   return m;
 };

@@ -1,7 +1,7 @@
 # coursera-algorithms
 Implementation of algorithms and data structures as taught in Algorithms I and II Coursera courses.
 
-# Eclipse instalation
+# eclipse instalation
 * Open Git perspective.
 * Click on 'Clone Git repository and add the clone to this view' button.
 * Select Clone URI.
@@ -10,6 +10,10 @@ Implementation of algorithms and data structures as taught in Algorithms I and I
 * Return to Java/Java EE perspective and open Package Explorer/Project Explorer.
 * Right click and select Import > Maven > Existing Maven Projects.
 * Select the cloned project directory in the Root Directory.
+
+# run the project
+* Run Application.java (coursera.algorithms.Application).
+* Go to http://localhost:8080/<algorithm-family>/index.html.
 
 # contributors
 - Ignác (enchf).
