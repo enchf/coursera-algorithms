@@ -13,7 +13,7 @@ Implementation of algorithms and data structures as taught in Algorithms I and I
 
 # run the project
 * Run Application.java (coursera.algorithms.Application).
-* Go to http://localhost:8080/<algorithm-family>/index.html.
+* Go to http://localhost:8080/index.html and select one of the existing algorithm players.
 
 # contributors
 - Ignác (enchf).
