@@ -5,8 +5,8 @@ package coursera.algorithms.unionfind;
 
 import org.apache.commons.lang3.StringUtils;
 
-import coursera.algorithms.core.Description;
 import coursera.algorithms.core.Stage;
+import coursera.algorithms.core.descriptor.Description;
 
 /**
  * Eager approach for union-find.

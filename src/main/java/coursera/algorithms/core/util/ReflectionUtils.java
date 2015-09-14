@@ -1,7 +1,7 @@
 /**
  * 
  */
-package coursera.algorithms.core;
+package coursera.algorithms.core.util;
 
 import java.lang.reflect.ParameterizedType;
 

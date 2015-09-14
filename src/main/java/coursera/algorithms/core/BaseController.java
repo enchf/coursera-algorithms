@@ -10,6 +10,10 @@ import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import coursera.algorithms.core.descriptor.Description;
+import coursera.algorithms.core.descriptor.Implementation;
+import coursera.algorithms.core.util.ReflectionUtils;
+
 /**
  * Controller base class for common operations.
  * @author Ernesto Espinosa.

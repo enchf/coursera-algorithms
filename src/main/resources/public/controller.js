@@ -11,13 +11,15 @@ $(function() {
 		  "path": "title",
 		  "render": Monominoes.renders.H1
 		},{
-		  "path": "list",
+		  "path": "players",
 		  "render": Monominoes.renders.LIST_GROUP({
-			"formatter": function(item) {
-			  return Monominoes.render.A({
-				"href": item.url,
-				"formatter": function(item) { return item.description; }
-			  }).render(item);
+			"item-render": function(item,list) {
+			  var li = MonoUtils.getTag(Monominoes.tags.LI)
+			  	.addClass(this["item-class"]).appendTo(list);
+			  return Monominoes.renders.A({ 
+				"href": item.link,
+				"formatter": function(item) { return item.name + " - " + item.description; }
+			  }).render(item,li);
 			}
 		  })
 		}]

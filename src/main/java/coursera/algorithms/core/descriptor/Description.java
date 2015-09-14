@@ -1,7 +1,7 @@
 /**
  * 
  */
-package coursera.algorithms.core;
+package coursera.algorithms.core.descriptor;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -4,11 +4,13 @@
 package coursera.algorithms.unionfind;
 
 import coursera.algorithms.core.Algorithm;
+import coursera.algorithms.core.descriptor.Description;
 
 /**
  * Interface for Union-Find implementations.
  * @author Ernesto Espinosa.
  */
+@Description("Dynamic Connectivity: Unite and Find if two objects are connected")
 public interface UnionFind extends Algorithm {
 
 	/**
