@@ -16,3 +16,15 @@ Common.implementations = function(path,target) {
 	}).render(data,target);
   });
 };
+
+Common.prepareReset = function(path,target,restarget) {
+  $("#"+target).click(function(event) {
+    $.getJSON("/" + path + "/reset", function(data) {
+      Common.appendStage(restarget,data);
+    });
+  });
+};
+
+Common.appendStage = function(target,stage) {
+  $("#"+target).append(MonoUtils.getTag(Monominoes.tags.P).text(stage.description));
+};

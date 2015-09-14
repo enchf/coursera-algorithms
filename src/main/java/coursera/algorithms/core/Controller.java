@@ -13,10 +13,10 @@ public interface Controller {
 	 * Initializes the controller.
 	 * @param args Initialization arguments.
 	 */
-	void start(String bean, Object...args);
+	Stage start(String bean, Object...args);
 	
 	/**
 	 * Resets the controller.
 	 */
-	void reset();
+	Stage reset();
 }

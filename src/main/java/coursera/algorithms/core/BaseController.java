@@ -48,17 +48,19 @@ public abstract class BaseController<T extends Algorithm> implements Controller 
 	/** {@inheritDoc} */
 	@Override
 	@RequestMapping("/unionfind/reset")
-	public void reset() {
+	public Stage reset() {
 		checkForInitialization();
 		this.getAlgorithm().reset();
+		return this.getAlgorithm().getStage();
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	@SuppressWarnings("unchecked")
-	public void start(String bean, Object...args) {
+	public Stage start(String bean, Object...args) {
 		validateImplementation(bean);
 		this.setAlgorithm((T) beanFactory.getBean(bean, args));
+		return this.getAlgorithm().getStage();
 	}
 	
 	/**
